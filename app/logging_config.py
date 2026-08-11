@@ -8,7 +8,7 @@ from typing import Any
 import structlog
 from structlog.contextvars import merge_contextvars
 
-from .pii import scrub_text
+from .pii import scrub_text, scrub_value
 
 LOG_PATH = Path(os.getenv("LOG_PATH", "data/logs.jsonl"))
 
@@ -25,12 +25,7 @@ class JsonlFileProcessor:
 
 def scrub_event(_: Any, __: str, event_dict: dict[str, Any]) -> dict[str, Any]:
     for key, val in event_dict.items():
-        if isinstance(val, str):
-            event_dict[key] = scrub_text(val)
-        elif isinstance(val, dict):
-            event_dict[key] = {
-                k: scrub_text(v) if isinstance(v, str) else v for k, v in val.items()
-            }
+        event_dict[key] = scrub_value(val)
     return event_dict
 
 

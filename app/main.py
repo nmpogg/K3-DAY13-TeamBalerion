@@ -52,7 +52,7 @@ async def metrics() -> dict:
 
 
 @app.post("/chat", response_model=ChatResponse)
-async def chat(request: Request, body: ChatRequest) -> ChatResponse:
+def chat(request: Request, body: ChatRequest) -> ChatResponse:
     # Enrich — tất cả log sau đây tự động có các trường này
     bind_contextvars(
         user_id_hash=hash_user_id(body.user_id),

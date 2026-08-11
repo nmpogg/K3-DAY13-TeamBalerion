@@ -7,7 +7,7 @@ from typing import Any
 
 PII_PATTERNS: dict[str, str] = {
     "email": r"[\w\.-]+@[\w\.-]+\.\w+",
-    "phone_vn": r"(?:\+84|0)[ \.-]?\d{3}[ \.-]?\d{3}[ \.-]?\d{3,4}",
+    "phone_vn": r"(?:\+84|0)[ \.-]?\d{2,3}[ \.-]?\d{3}[ \.-]?\d{3,4}",
     "cccd": r"\b\d{12}\b",
     "credit_card": r"\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b",
     # Thêm patterns mới:
@@ -21,6 +21,15 @@ def scrub_text(text: str) -> str:
     for name, pattern in PII_PATTERNS.items():
         safe = re.sub(pattern, f"[REDACTED_{name.upper()}]", safe)
     return safe
+
+def scrub_value(val: Any) -> Any:
+    if isinstance(val, str):
+        return scrub_text(val)
+    if isinstance(val, dict):
+        return {k: scrub_value(v) for k, v in val.items()}
+    if isinstance(val, list):
+        return [scrub_value(item) for item in val]
+    return val
 
 
 def summarize_text(text: str, max_len: int = 80) -> str:
