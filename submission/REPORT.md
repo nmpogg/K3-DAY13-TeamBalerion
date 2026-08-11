@@ -2,9 +2,9 @@
 
 ## 1. Thông tin nhóm
 
-- Tên nhóm:
-- Repository URL:
-- Commit SHA cuối:
+- Tên nhóm: Balerion
+- Repository URL: https://github.com/nmpogg/K3-DAY13-TeamBalerion
+- Commit SHA cuối: 
 - Thành viên và vai trò:
 
 ## 2. Kết quả kỹ thuật
@@ -12,7 +12,7 @@
 - Điểm `validate_logs.py`:30/100
 - Tổng số traces:
 - Số PII leak còn lại:
-- Link/đường dẫn dashboard:
+- Link/đường dẫn dashboard: submission/evidence/dashboard.png
 
 ## 3. Logging và tracing
 
