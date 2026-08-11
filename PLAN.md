@@ -3,6 +3,7 @@
 Kế hoạch này phân chia công việc theo vai trò chuyên môn của từng thành viên. Mọi người có thể tiến hành công việc song song hoặc nối tiếp tùy vào sự phụ thuộc của file.
 
 ## 👤 Thành viên A (Logging & Middleware): Phụ trách Checkpoint 1
+Trần Hoàng Vũ - 2A202602000
 **Vai trò:** Đảm bảo luồng request được theo dõi (traceable) và các log đầu ra có đầy đủ metadata ngữ cảnh.
 
 - **Nhiệm vụ chi tiết:**
@@ -13,6 +14,7 @@ Kế hoạch này phân chia công việc theo vai trò chuyên môn của từn
   - `app/logging_config.py` (hoặc `app/main.py`): Sử dụng contextvars của structlog để bind các giá trị metadata vào log trước khi xuất ra.
 
 ## 👤 Thành viên B (Security & Compliance): Phụ trách Checkpoint 1
+Nguyễn Thùy Trang - 2A202601559
 **Vai trò:** Đảm bảo hệ thống tuân thủ bảo mật, không rò rỉ dữ liệu nhạy cảm (PII) của người dùng ra file log.
 
 - **Nhiệm vụ chi tiết:**
@@ -23,6 +25,7 @@ Kế hoạch này phân chia công việc theo vai trò chuyên môn của từn
   - `app/logging_config.py`: Uncomment processor liên quan đến PII và thêm nó vào chuỗi xử lý (processors list) của structlog.
 
 ## 👤 Thành viên C (Metrics & Alerting): Phụ trách Checkpoint 2
+Nguyễn Văn Đại - 2A202601245
 **Vai trò:** Đo lường hiệu năng hệ thống, tích hợp hệ thống Tracing và thiết lập cảnh báo khi hệ thống không đạt chuẩn.
 
 - **Nhiệm vụ chi tiết:**
@@ -36,6 +39,7 @@ Kế hoạch này phân chia công việc theo vai trò chuyên môn của từn
   - `docs/alerts.md` (hoặc tạo file Runbook mới): Viết quy trình xử lý sự cố.
 
 ## 👤 Thành viên D (QA & Incident Analyst): Phụ trách Checkpoint 3 & Setup ban đầu
+Ngô Minh Phong - 2A202602025
 **Vai trò:** Đảm bảo hệ thống có dữ liệu để test, thiết kế công cụ quan sát (Dashboard) và chủ trì giải quyết sự cố thực tế (Challenge).
 
 - **Nhiệm vụ chi tiết:**

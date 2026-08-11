@@ -4,9 +4,12 @@
 
 - Tên nhóm: Balerion
 - Repository URL: https://github.com/nmpogg/K3-DAY13-TeamBalerion
-- Commit SHA cuối: 
+- Commit SHA cuối: 2ec8f8543f0afc84183c124364e9ce411a415e5f
 - Thành viên và vai trò:
-
+  - **Trần Hoàng Vũ** (2A202602000): Logging & Middleware
+  - **Nguyễn Thùy Trang** (2A202601559): Security & Compliance
+  - **Nguyễn Văn Đại** (2A202601245): Metrics & Alerting
+  - **Ngô Minh Phong** (2A202602025): QA & Incident Analyst
 ## 2. Kết quả kỹ thuật
 
 - Điểm `validate_logs.py`: 100/100
@@ -52,4 +55,7 @@ Với mỗi thành viên, ghi rõ nhiệm vụ và link commit/PR tương ứng.
 
 | Thành viên | Phần việc | Commit/PR | Điều đã học |
 |---|---|---|---|
-| | | | |
+| Trần Hoàng Vũ | CP1 (Middleware, Correlation ID, và gán log metadata) | 36e9884cc7b76d1ecdd3aaecc88c667aca68b45d | Hiểu luồng Request và cách gắn context vào log |
+| Nguyễn Thùy Trang | CP1 (Regex PII, cấu hình PII toàn cục) | 4f32712a0cc639c9811d02996d69b0e75177b315 | Biết cách mask dữ liệu nhạy cảm trước khi log ra file |
+| Nguyễn Văn Đại | CP2 (Langfuse, Metrics, SLO, Alerts) | 39bca5422fa828633ecdd6acdf0f90960cbe2f82 | Nắm vững cách đẩy trace và cấu hình quy tắc cảnh báo |
+| Ngô Minh Phong | CP3 (Setup, Dashboard, Điều tra sự cố) | 2ec8f8543f0afc84183c124364e9ce411a415e5f | Trải nghiệm thực tế cách đọc log, trace để tìm root cause |
