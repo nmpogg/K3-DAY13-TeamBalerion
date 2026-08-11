@@ -7,9 +7,12 @@ from typing import Any
 
 PII_PATTERNS: dict[str, str] = {
     "email": r"[\w\.-]+@[\w\.-]+\.\w+",
-    "phone_vn": r"(?<!\d)(?:\+84|0)(?:[ .-]?\d){9}(?!\d)",
+    "phone_vn": r"(?:\+84|0)[ \.-]?\d{3}[ \.-]?\d{3}[ \.-]?\d{3,4}",
     "cccd": r"\b\d{12}\b",
     "credit_card": r"\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b",
+    # Thêm patterns mới:
+    "passport": r"\b[A-Z]\d{7,8}\b",
+    "address_vn": r"\b(?:số nhà|đường|phường|quận|huyện|tỉnh|thành phố)\b",
 }
 
 
@@ -18,29 +21,6 @@ def scrub_text(text: str) -> str:
     for name, pattern in PII_PATTERNS.items():
         safe = re.sub(pattern, f"[REDACTED_{name.upper()}]", safe)
     return safe
-
-
-def scrub_value(value: Any) -> Any:
-    """Return a copy of a log value with PII removed from every string.
-
-    Log payloads can contain nested dictionaries and lists, so scrubbing only
-    the first level leaves a path for sensitive data to reach JSONL. Non-text
-    values are preserved to keep metric fields numeric.
-    """
-    if isinstance(value, str):
-        return scrub_text(value)
-    if isinstance(value, Mapping):
-        return {
-            scrub_text(key) if isinstance(key, str) else key: scrub_value(item)
-            for key, item in value.items()
-        }
-    if isinstance(value, list):
-        return [scrub_value(item) for item in value]
-    if isinstance(value, tuple):
-        return tuple(scrub_value(item) for item in value)
-    if isinstance(value, set):
-        return {scrub_value(item) for item in value}
-    return value
 
 
 def summarize_text(text: str, max_len: int = 80) -> str:
